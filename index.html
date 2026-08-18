@@ -1,0 +1,72 @@
+<!--
+  Esta página tiene 3 partes, como un sándwich:
+  1) index.html (este archivo) = el "esqueleto": los controles
+     para usar la app (dónde escribes, dónde ves el resultado).
+  2) style.css = la "ropa": colores, letras y tamaños.
+  3) script.js = el "cerebro": genera la contraseña de verdad.
+  El detalle de cómo funciona el método está en README.md.
+-->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Generador de Contraseñas — Frase → ASCII → Contraseña</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<main class="console">
+
+  <header class="console__header">
+    <p class="eyebrow">SPEC · FRASE&nbsp;→&nbsp;ASCII&nbsp;→&nbsp;CONTRASEÑA</p>
+    <h1>Generador<span class="dim">.</span>Contraseñas</h1>
+    <p class="lede">Escribe una frase, elige el largo y genera una contraseña segura. Ver <a href="README.md">README</a> para el detalle del método.</p>
+  </header>
+
+  <section class="panel">
+
+    <!-- La frase que escribes es la "materia prima": sus letras
+         alimentan el generador, pero el resultado final siempre
+         se revuelve con números aleatorios de verdad. -->
+    <label for="phrase-input" class="panel__label">Frase de entrada</label>
+    <input id="phrase-input" type="text" placeholder="Ej: mi perro corre rápido" autocomplete="off" spellcheck="false" />
+
+    <label for="length-range" class="panel__label">Longitud: <span id="length-value">16</span> caracteres</label>
+    <input id="length-range" type="range" min="8" max="32" value="16" step="1" />
+
+    <div class="panel__actions">
+      <button id="generate-btn" class="btn btn--primary" type="button">Generar contraseña</button>
+    </div>
+
+    <label for="password-output" class="panel__label">Contraseña generada</label>
+    <input id="password-output" type="text" readonly placeholder="Aquí aparecerá tu contraseña…" spellcheck="false" />
+
+    <div class="strength" aria-live="polite">
+      <div class="strength__bar"><div id="strength-fill" class="strength__fill"></div></div>
+      <span id="strength-label" class="strength__label"></span>
+    </div>
+
+    <!-- Cinta que muestra cómo cada letra de tu frase aporta una
+         pieza (letra, número o símbolo) a la contraseña final. -->
+    <div class="tape" aria-hidden="true">
+      <span class="tape__label">cinta</span>
+      <div id="tape-track" class="tape__track"><span class="tape__empty">verás aquí cómo la frase aporta piezas a la contraseña</span></div>
+    </div>
+
+    <div class="panel__actions">
+      <button id="copy-btn" class="btn btn--ghost" type="button">Copiar contraseña</button>
+      <span id="status" class="status" role="status" aria-live="polite"></span>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
