@@ -1,5 +1,5 @@
 // ============================================================
-//  GENERADOR DE CONTRASEÑAS - explicado para niños de primaria 🧒
+//  GENERADOR DE CONTRASEÑAS
 // ============================================================
 //
 // ¿Recuerdas la app de "Cifrado ASCII"? Ahí cada letra tenía un
